@@ -27,8 +27,6 @@ npm i
 
 Begin running the program by installing the necessary dependencies and then running "node index.js" in your command line
 
-
-
 ## GitHub Repo
 
     **_ THIS IS A PLACEHOLDER FOR A GITHUB REPO _**
@@ -41,8 +39,26 @@ Begin running the program by installing the necessary dependencies and then runn
 
 Ask first
 
+## Testing
+
+To initiate the unit tests for this project, run the following command in the console/command line: 
+
+```
+npm test
+```
+
 ## Questions and Contact Info
 
 If you have any questions about the repo, please open an issue on GitHub or contact me directly at eric.wittenstein@gmail.com.
 
 You can find more of my work at [github.com/ericwittenstein/](https://github.com/ericwittenstein/).
+
+<!-- EHW SIGNET
+---------
+    |
+  -----
+    |
+---------
+ -->
+
+### Eric Wittenstein
