@@ -29,7 +29,7 @@ Begin running the program by installing the necessary dependencies and then runn
 
 ## GitHub Repo
 
-    **_ THIS IS A PLACEHOLDER FOR A GITHUB REPO _**
+https://github.com/ericwittenstein/Info-Card-Generator
 
 ## Project Demo
 
