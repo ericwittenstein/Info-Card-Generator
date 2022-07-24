@@ -5,7 +5,7 @@ const Intern = require('../lib/Intern');
 describe('Intern', () => {
     // test for the return of the name
     describe('nameTest', () => {
-        it('should return an object with the Intern properties of name, id, email, this test checks for correct name return', () => {
+        it('should return an object with the Intern properties of name, id, email, and school, this test checks for correct name return', () => {
             // constructor for this test
             const obj = new Intern('EricGOOD', 1234, 'ericBAD.wittenstein@gmail.com', 'UGA');
 
@@ -16,7 +16,7 @@ describe('Intern', () => {
 
     // test for the return of the id number 
     describe('idTest', () => {
-        it('should return an object with the Intern properties of name, id, email, this test checks for correct id return', () => {
+        it('should return an object with the Intern properties of name, id, email, and school, this test checks for correct id return', () => {
             // constructor for this test
             const obj = new Intern('EricBAD', 8675309, 'ericBAD.wittenstein@gmail.com', 'UGA');
 
@@ -27,7 +27,7 @@ describe('Intern', () => {
 
     // test for the return of the email
     describe('emailTest', () => {
-        it('should return an object with the Intern properties of name, id, email, this test checks for correct email return', () => {
+        it('should return an object with the Intern properties of name, id, email, and school, this test checks for correct email return', () => {
             // constructor for this test
             const obj = new Intern('EricBAD', 9876, 'ericGOOD.wittenstein@gmail.com', 'UGA');
 
@@ -38,7 +38,7 @@ describe('Intern', () => {
 
     // test for the return of the Intern-specific school property
     describe('schoolTest', () => {
-        it('should return an object with the Intern properties of name, id, email, this test checks for correct school return', () => {
+        it('should return an object with the Intern properties of name, id, email, and school, this test checks for correct school return', () => {
             // constructor for this test
             const obj = new Intern('EricBAD', 1785, 'ericBAD.wittenstein@gmail.com', 'UNC');
 
