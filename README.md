@@ -31,9 +31,9 @@ Begin running the program by installing the necessary dependencies and then runn
 
 https://github.com/ericwittenstein/Info-Card-Generator
 
-## Project Demo
+## Project Demo Walkthrough Video
 
-    **_ THIS IS A PLACEHOLDER FOR AN IMAGE OR SCREEN RECORDING OF THE PROJECT _**
+https://drive.google.com/file/d/1S5_-FJlulxGhU7nQZgGfu8AKkQNAav64/view
 
 ## Contributing
 
