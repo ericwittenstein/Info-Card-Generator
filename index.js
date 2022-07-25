@@ -102,10 +102,38 @@ function addEmployee() {
 
 // function to create the employee info card for the employee at the specified index of the employeesArray
 function createEmployeeCard(employee) {
-    
+    switch (employee.getRole()) {
+        case "Intern":
+            return `
+            <div class="card m-5 shadow" style="width: 25rem;">
+                <div class="text-white" style="background-color: #4B9CD3;">
+                    <h5 class="card-title m-2">${employee.personName}</h5>
+                    <h5 class="card-text m-2">Intern</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${employee.id}</li>
+                    <li class="list-group-item"><a href="mailto: ${employee.email}" target="_blank">${employee.email}</a></li>
+                    <li class="list-group-item">School: ${employee.school}</li>
+                </ul>
+            </div>`;
+
+        case "Engineer":
+            return `
+            <div class="card m-5 shadow" style="width: 25rem;">
+                <div class="text-white" style="background-color: #4B9CD3;">
+                    <h5 class="card-title m-2">${employee.personName}</h5>
+                    <h5 class="card-text m-2">Engineer</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${employee.id}</li>
+                    <li class="list-group-item"><a href="mailto: ${employee.email}" target="_blank">${employee.email}</a></li>
+                    <li class="list-group-item">Github: ${employee.github}</li>
+                </ul>
+            </div>`;
+    }
 }
 
-// function to check if any employee cards need to be creates, and if so, passes the index of the employee from the employeesArray to the createEmployeeCard function, which will create the html for the card, and then that text is added to the overall text for passage to the html
+// function to check if any employee cards need to be creates, and if so, passes the employee from the employeesArray to the createEmployeeCard function, which will create the html for the card, and then that text is returned and added to the overall text for return to the createInfoCards function
 function checkForEmployees() {
     if (employeesArray.length > 1) {
         // creates the employeeCards variable which will hold the collective text of all employee info cards
@@ -132,10 +160,9 @@ function createInfoCards() {
                 <li class="list-group-item"><a href="mailto: ${employeesArray[0].email}" target="_blank">${employeesArray[0].email}</a></li>
                 <li class="list-group-item">office number: ${employeesArray[0].officeNumber}</li>
             </ul>
-        </div>
+    </div>
 
         ${checkForEmployees()}
-    </div>
     `
 }
 
@@ -156,7 +183,7 @@ function generateHTML() {
 <body>
     <div class="jumbotron jumbotron-fluid p-3 text-white" style="background-color: #13294b;">
         <div class="container">
-            <h2 class="display-5 text-center">Team Contact Information</h2>
+            <h2 class="display-5 text-center">Project Team Contact Information</h2>
         </div>
     </div>
 
