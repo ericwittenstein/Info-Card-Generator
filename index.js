@@ -112,7 +112,7 @@ function createEmployeeCard(employee) {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item"><a href="mailto: ${employee.email}" target="_blank">${employee.email}</a></li>
+                    <li class="list-group-item"><a href="mailto: ${employee.email}" target="_blank">Email: ${employee.email}</a></li>
                     <li class="list-group-item">School: ${employee.school}</li>
                 </ul>
             </div>`;
@@ -126,7 +126,7 @@ function createEmployeeCard(employee) {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item"><a href="mailto: ${employee.email}" target="_blank">${employee.email}</a></li>
+                    <li class="list-group-item"><a href="mailto: ${employee.email}" target="_blank">Email: ${employee.email}</a></li>
                     <li class="list-group-item">Github: ${employee.github}</li>
                 </ul>
             </div>`;
@@ -156,9 +156,9 @@ function createInfoCards() {
                 <h5 class="card-text m-2">Manager</h5>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">id: ${employeesArray[0].id}</li>
-                <li class="list-group-item"><a href="mailto: ${employeesArray[0].email}" target="_blank">${employeesArray[0].email}</a></li>
-                <li class="list-group-item">office number: ${employeesArray[0].officeNumber}</li>
+                <li class="list-group-item">ID: ${employeesArray[0].id}</li>
+                <li class="list-group-item"><a href="mailto: ${employeesArray[0].email}" target="_blank">Email: ${employeesArray[0].email}</a></li>
+                <li class="list-group-item">Office Number: ${employeesArray[0].officeNumber}</li>
             </ul>
     </div>
 
