@@ -2,15 +2,14 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 
 let employeesArray = [];
 
-// function to create the team manager; NOTE: This will need to run only once, at the beginning of the run
-function createManager() {
+// function to create the team manager upon program start; NOTE: This will need to run only once, at the beginning of the run
+function init() {
     inquirer.prompt([
         {
             type: 'input',
@@ -40,7 +39,7 @@ function createManager() {
         // call to the add employee function to continue the run
         addEmployee();
     });
-};
+}
 
 // function to add an additional employee
 function addEmployee() {
@@ -91,7 +90,7 @@ function addEmployee() {
         // if the user chose to create an engineer
         else if (employeeInfo.addAnother === 'Add Engineer') {
             const engineer = new Engineer(employeeInfo.name, employeeInfo.id, employeeInfo.email, employeeInfo.engineerGithub);
-            employeesArray.push(Engineer);
+            employeesArray.push(engineer);
             addEmployee();
         }
         // if the user chose to not add any more employee, go to the sendToHTML method
@@ -99,17 +98,84 @@ function addEmployee() {
             sendToHTML();
         }
     });
-};
-
-// functions to write to the HTML file
-function writeToFile(fileName, data) {
-    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
-function init() {
-    inquirer.prompt(questions).then((inquirerResponses) => {
-        console.log('The README.md file has now been generated in the same directory level as the project index file. Enjoy!');
-        writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
+// function to create the employee info card for the employee at the specified index of the employeesArray
+function createEmployeeCard(employee) {
+    
+}
+
+// function to check if any employee cards need to be creates, and if so, passes the index of the employee from the employeesArray to the createEmployeeCard function, which will create the html for the card, and then that text is added to the overall text for passage to the html
+function checkForEmployees() {
+    if (employeesArray.length > 1) {
+        // creates the employeeCards variable which will hold the collective text of all employee info cards
+        let employeeCards = createEmployeeCard(employeesArray[1]);
+        for (let i = 2; i < employeesArray.length; i++) {
+            employeeCards += createEmployeeCard(employeesArray[i]);
+        }
+        return employeeCards;
+    } else {
+        return '';
+    }
+}
+
+// function to create the html text for the info cards, the first of which will be the manager followed by however many employees there are. i decided to do the employee cards seperate since it's not guarenteed that the user inputs anything
+function createInfoCards() {
+    return `
+    <div class="card m-5 shadow" style="width: 25rem;">
+            <div class="text-white" style="background-color: #4B9CD3;">
+                <h5 class="card-title m-2">${employeesArray[0].personName}</h5>
+                <h5 class="card-text m-2">Manager</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">id: ${employeesArray[0].id}</li>
+                <li class="list-group-item"><a href="mailto: ${employeesArray[0].email}" target="_blank">${employeesArray[0].email}</a></li>
+                <li class="list-group-item">office number: ${employeesArray[0].officeNumber}</li>
+            </ul>
+        </div>
+
+        ${checkForEmployees()}
+    </div>
+    `
+}
+
+// function to create the html text that will be passed into the WriteFile function
+function generateHTML() {
+    return `
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Team Contact Info Cards</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid p-3 text-white" style="background-color: #13294b;">
+        <div class="container">
+            <h2 class="display-5 text-center">Team Contact Information</h2>
+        </div>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-around mt-3">
+        ${createInfoCards()}
+    </div>
+</body>
+
+</html>`
+}
+
+// functions to write to the HTML file
+function sendToHTML() {
+    return fs.writeFile('./dist/index.html', generateHTML(), (error) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('The contact information for this team can be found in the index.html file located inside the "dist" folder');
+        }
     });
 }
 
